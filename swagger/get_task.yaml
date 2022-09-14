@@ -1,0 +1,13 @@
+Obtener tarea
+---
+tags:
+- "task"
+response: 
+  200: 
+    description: Se trajo correctamente el registro
+  401:
+    description: Las credeciales provenidas en los datos de login son invalidas
+paramenters: 
+  - name: id
+    in: path
+    required: false
