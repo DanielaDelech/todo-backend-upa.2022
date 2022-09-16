@@ -1,11 +1,11 @@
+from pickle import FALSE
+from distutils.sysconfig import PREFIX
 from flask import Flask, redirect
-
-from resources.task import Task
+from resources.task import Task, TaskList, TaskSearch
 from flask_restful import Api
 from flasgger import Swagger
 
 from db import db
-
 import os
 
 app = Flask(__name__)
@@ -52,7 +52,9 @@ app.config['SQLALCHEMY_ECHO'] = False
 def welcome():
    return redirect(f"{PREFIX}/apidocs", code=302)
  
-api.add_resource(Task, f'{PREFIX}/task/<id>')
+api.add_resource(Task, f'{PREFIX}/tasks/<id>')
+api.add_resource(TaskList, f'{PREFIX}/tasks')
+api.add_resource(TaskSearch, f'{PREFIX}/search/tasks')
 
 
 # Bloque opcional para ejecutar con python app.py
